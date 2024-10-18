@@ -40,6 +40,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
         Vehicle existingVehicle = obtenerVehiculoPorId(id);
         if (existingVehicle != null) {
             // Aquí actualizamos cada una de las propiedades del vehículo existente
+            existingVehicle.setId(vehicle.getId());
             existingVehicle.setBrand(vehicle.getBrand());
             existingVehicle.setModel(vehicle.getModel());
             existingVehicle.setMillage(vehicle.getMillage());
