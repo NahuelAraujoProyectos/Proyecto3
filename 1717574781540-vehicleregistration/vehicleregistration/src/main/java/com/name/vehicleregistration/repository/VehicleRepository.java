@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface VehicleRepository {
     //Obtener lista de vehiculos
-    public List<Vehicle> obtenerVehiculo();
+    public List<Vehicle> obtenerVehiculos();
     //Guardar Vehiculo
-    public void anadirV (Vehicle vehicle);
+    public void anadirVehiculo (Vehicle vehicle);
     //Obtener vehiculo por id
-    public Vehicle obtenerId(Integer id);
+    public Vehicle obtenerVehiculoPorId(Integer id);
     // Actualizar vehiculo
-    public void actualizarV(Integer id, Vehicle vehicle);
+    public void actualizarVehiculo(Integer id, Vehicle vehicle);
     // Eliminar vehiculo
-    public void eliminarV(Integer id);
+    public void eliminarVehiculo(Integer id);
 }

@@ -20,7 +20,7 @@ public class VehicleServiceImpl implements VehicleService {
     public void anadirVehiculo(VehicleDto vehicleDto) {
         Vehicle vehicle;
         vehicle = mapperEntity(vehicleDto);
-        vehicleRepository.anadirV(vehicle);
+        vehicleRepository.anadirVehiculo(vehicle);
         log.info("Vehiculo añadido");
     }
 
@@ -28,7 +28,7 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public VehicleDto obtenerVehiculo(Integer id) {
         Vehicle vehicle;
-        vehicle = vehicleRepository.obtenerId(id);
+        vehicle = vehicleRepository.obtenerVehiculoPorId(id);
         log.info("Vehiculo con id {} obtenido", id);
         return mapperDto(vehicle);
     }
@@ -37,14 +37,14 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public void actualizarVehiculo(Integer id, VehicleDto vehicleDto) {
         Vehicle vehicle = mapperEntity(vehicleDto);
-        vehicleRepository.actualizarV(id,vehicle);
+        vehicleRepository.actualizarVehiculo(id,vehicle);
         log.info("Vehiculo con id {} actualizado", id);
     }
 
     //Eliminar Vehiculo
     @Override
     public void eliminarVehiculo(Integer id) {
-        vehicleRepository.eliminarV(id);
+        vehicleRepository.eliminarVehiculo(id);
         log.info("Vehiculo con id {} eliminado", id);
     }
 

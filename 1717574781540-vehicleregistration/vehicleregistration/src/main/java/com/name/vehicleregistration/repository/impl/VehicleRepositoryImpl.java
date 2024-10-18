@@ -14,19 +14,19 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 
     //Obtener Lista Vehiculos
     @Override
-    public List<Vehicle> obtenerVehiculo() {
+    public List<Vehicle> obtenerVehiculos() {
         return listaVehiculos;
     }
 
     //Añadir Vehiculo
     @Override
-    public void anadirV(Vehicle vehicle) {
+    public void anadirVehiculo(Vehicle vehicle) {
         listaVehiculos.add(vehicle);
     }
 
     //Obtener Vehiculo
     @Override
-    public Vehicle obtenerId(Integer id) {
+    public Vehicle obtenerVehiculoPorId(Integer id) {
         // Usamos Optional para manejar el caso en que el vehículo no existe
         Optional<Vehicle> vehicle = listaVehiculos.stream()
                 .filter(vehicle1 -> vehicle1.getId().equals(id))
@@ -36,11 +36,19 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 
     //Actualizar Vehiculo
     @Override
-    public void actualizarV(Integer id, Vehicle vehicle) {
-        Vehicle existingVehicle = obtenerId(id);
+    public void actualizarVehiculo(Integer id, Vehicle vehicle) {
+        Vehicle existingVehicle = obtenerVehiculoPorId(id);
         if (existingVehicle != null) {
-            eliminarV(id); // Solo eliminamos si el vehículo existe
-            anadirV(vehicle); // Añadimos el vehículo actualizado
+            // Aquí actualizamos cada una de las propiedades del vehículo existente
+            existingVehicle.setBrand(vehicle.getBrand());
+            existingVehicle.setModel(vehicle.getModel());
+            existingVehicle.setMillage(vehicle.getMillage());
+            existingVehicle.setPrice(vehicle.getPrice());
+            existingVehicle.setYear(vehicle.getYear());
+            existingVehicle.setDescription(vehicle.getDescription());
+            existingVehicle.setColour(vehicle.getColour());
+            existingVehicle.setFuelType(vehicle.getFuelType());
+            existingVehicle.setNumDoors(vehicle.getNumDoors());
         } else {
             throw new IllegalArgumentException("Vehículo con ID " + id + " no encontrado para actualizar.");
         }
@@ -48,8 +56,8 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 
     //Eliminar Vehiculo
     @Override
-    public void eliminarV(Integer id) {
-        Vehicle vehicle = obtenerId(id);
+    public void eliminarVehiculo(Integer id) {
+        Vehicle vehicle = obtenerVehiculoPorId(id);
         if (vehicle != null) {
             listaVehiculos.remove(vehicle);
         } else {
